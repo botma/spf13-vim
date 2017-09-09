@@ -1,0 +1,48 @@
+
+set nospell
+let NERDTreeQuitOnOpen = 0
+let g:ycm_server_python_interpreter='/usr/bin/python'
+let g:ycm_global_ycm_extra_conf='~/.spf13-vim-3/.ycm_extra_conf.py'
+
+
+"gtags
+:map <C-]> :Gtags <CR><CR>
+"":map <C-]> :Gtags <C-r>=expand("<cword>")<CR>
+:map <C-\> :Gtags -r<CR><CR>
+:map <F10> :cclose<CR>
+:map <F11> :cp<CR>
+:map <F12> :cn<CR>
+
+
+" GUI Settings {
+
+    " GVIM- (here instead of .gvimrc)
+    if has('gui_running')
+        set guioptions-=T           " Remove the toolbar
+        set lines=40                " 40 lines of text instead of 24
+        if !exists("g:spf13_no_big_font")
+            if LINUX() && has("gui_running")
+                set guifont=Andale\ Mono\ Regular\ 13,Menlo\ Regular\ 13,Consolas\ Regular\ 13,Courier\ New\ Regular\ 15
+            elseif OSX() && has("gui_running")
+                set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+            elseif WINDOWS() && has("gui_running")
+                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+            endif
+        endif
+    else
+        if &term == 'xterm' || &term == 'screen'
+            set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+        endif
+        "set term=builtin_ansi       " Make arrow and other keys work
+    endif
+
+" }
+
+
+" NERDTree {
+    let g:nerdtree_tabs_open_on_gui_startup=1
+    let g:nerdtree_tabs_open_on_new_tab=1
+    let NERDTreeMouseMode=1
+" }
+
+
